@@ -22,10 +22,10 @@ export const CreateNewBlockFromBlock: Record<
 // https://docs.slatejs.org/api/nodes/element#rendering-void-elements
 // https://github.com/ianstormtaylor/slate/issues/3930
 export default function Block({
-  element,
-  children,
-  attributes,
-}: RenderElementProps) {
+                                element,
+                                children,
+                                attributes,
+                              }: RenderElementProps) {
   if (element.type === BlockType.Title) {
     return (
       <div className="title" {...attributes}>

@@ -3,62 +3,22 @@ import styles from "./Editor.module.css";
 import isHotkey from "is-hotkey";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import {
-  createEditor,
-  Editor,
-  Element,
-  Node,
-  Point,
-  Range,
-  Transforms,
-} from "slate";
-import {
-  Editable,
-  ReactEditor,
-  RenderElementProps,
-  Slate,
-  withReact,
-} from "slate-react";
-import {
-  DndContext,
-  DragEndEvent,
-  DragOverlay,
-  DragStartEvent,
-} from "@dnd-kit/core";
-import {
-  SortableContext,
-  useSortable,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
+import { createEditor, Editor, Element, Node, Point, Range, Transforms } from "slate";
+import { Editable, ReactEditor, RenderElementProps, Slate, withReact } from "slate-react";
+import { DndContext, DragEndEvent, DragOverlay, DragStartEvent } from "@dnd-kit/core";
+import { SortableContext, useSortable, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import classNames from "classnames";
 
-import {
-  useList,
-  useOthers,
-  useRoom,
-  useUpdateMyPresence,
-} from "./liveblocks.config";
+import { useList, useOthers, useRoom, useUpdateMyPresence } from "./liveblocks.config";
 import { BlockType, CustomElement } from "./types";
-import {
-  removeGlobalCursor,
-  setGlobalCursor,
-  toggleMark,
-  withLayout,
-  withNodeId,
-} from "./utils";
+import { removeGlobalCursor, setGlobalCursor, toggleMark, withLayout, withNodeId } from "./utils";
 import Leaf from "./blocks/Leaf";
 import Block, { CreateNewBlockFromBlock } from "./blocks/Block";
 import { HOTKEYS, PROSE_CONTAINER_ID, USER_COLORS } from "./constants";
-import {
-  Avatar,
-  BlockInlineActions,
-  Header,
-  Loading,
-  Toolbar,
-} from "./components";
+import { Avatar, BlockInlineActions, Header, Loading, Toolbar } from "./components";
 import { nanoid } from "nanoid";
 
 const SHORTCUTS: Record<string, BlockType> = {
@@ -74,7 +34,7 @@ const SHORTCUTS: Record<string, BlockType> = {
 const useEditor = () =>
   useMemo(
     () => withShortcuts(withNodeId(withLayout(withReact(createEditor())))),
-    []
+    [],
   );
 
 function isNodeWithId(editor: Editor, id: string) {
@@ -86,7 +46,7 @@ export default function App() {
 
   const [activeId, setActiveId] = useState<string | null>(null);
   const activeElement = editor.children.find(
-    (x) => "id" in x && x.id === activeId
+    (x) => "id" in x && x.id === activeId,
   ) as CustomElement | undefined;
 
   const room = useRoom();
@@ -101,7 +61,7 @@ export default function App() {
       if (editor.selection) {
         const previousBlock = editor.children[
           editor.selection.anchor.path[0]
-        ] as CustomElement;
+          ] as CustomElement;
 
         let newBlock;
 
@@ -206,7 +166,7 @@ export default function App() {
 
         isEditingRef.current = false;
       },
-      { isDeep: true }
+      { isDeep: true },
     );
   }, [blocks]);
 
@@ -286,7 +246,7 @@ export default function App() {
 
   const items = useMemo(
     () => editor.children.map((element: any) => element.id),
-    [editor.children]
+    [editor.children],
   );
 
   if (blocks == null) {
@@ -333,7 +293,7 @@ export default function App() {
                     selectedBlockId: (
                       editor.children[
                         editor.selection.anchor.path[0]
-                      ] as CustomElement
+                        ] as CustomElement
                     ).id,
                   });
                 } else {
@@ -344,7 +304,7 @@ export default function App() {
 
                 if (
                   editor.operations.every(
-                    (op) => op.isRemote || op.type === "set_selection"
+                    (op) => op.isRemote || op.type === "set_selection",
                   )
                 ) {
                   return;
@@ -357,7 +317,7 @@ export default function App() {
                 for (let i = 0; i < editor.children.length; i++) {
                   const child = editor.children[i] as CustomElement;
                   const liveblocksChildIndex = blocks.findIndex(
-                    (block) => block.id === child.id
+                    (block) => block.id === child.id,
                   );
 
                   if (liveblocksChildIndex === -1) {
@@ -452,7 +412,7 @@ export default function App() {
                     />
                   )}
                 </DragOverlay>,
-                document.getElementById(PROSE_CONTAINER_ID) || document.body
+                document.getElementById(PROSE_CONTAINER_ID) || document.body,
               )}
             </DndContext>
           </Slate>
@@ -463,13 +423,13 @@ export default function App() {
 }
 
 function SortableElement({
-  attributes,
-  element,
-  children,
-  renderElement,
-  onDelete,
-  onInsertBelow,
-}: RenderElementProps & {
+                           attributes,
+                           element,
+                           children,
+                           renderElement,
+                           onDelete,
+                           onInsertBelow,
+                         }: RenderElementProps & {
   renderElement: any;
   onDelete: () => void;
   onInsertBelow: (block: CustomElement) => void;
@@ -531,9 +491,9 @@ function SortableElement({
 }
 
 function DragOverlayContent({
-  element,
-  renderElement,
-}: {
+                              element,
+                              renderElement,
+                            }: {
   element: CustomElement;
   renderElement: (props: RenderElementProps) => JSX.Element;
 }) {

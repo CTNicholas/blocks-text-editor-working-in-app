@@ -1,4 +1,4 @@
-import React, { ComponentType, createRef, useEffect, useState } from "react";
+import React, { ComponentType, useEffect, useState } from "react";
 import Button from "./Button";
 import styles from "./Placeholder.module.css";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
@@ -23,12 +23,12 @@ type Props = {
 };
 
 export default function Placeholder({
-  icon: Icon,
-  text,
-  inputs,
-  onSubmit,
-  defaultOpen,
-}: Props) {
+                                      icon: Icon,
+                                      text,
+                                      inputs,
+                                      onSubmit,
+                                      defaultOpen,
+                                    }: Props) {
   const [values, setValues] = useState<Values>({});
   const [open, setOpen] = useState(defaultOpen);
   const [ready, setReady] = useState(false);
@@ -40,7 +40,8 @@ export default function Placeholder({
 
   return (
     <>
-      <PopoverPrimitive.Root open={open} onOpenChange={ready ? setOpen : () => {}}>
+      <PopoverPrimitive.Root open={open} onOpenChange={ready ? setOpen : () => {
+      }}>
         <PopoverPrimitive.Trigger asChild>
           <button className={styles.placeholder}>
             <span className={styles.placeholder_icon}>
@@ -76,7 +77,7 @@ export default function Placeholder({
                       pattern = undefined,
                     },
                   ],
-                  index
+                  index,
                 ) => (
                   <div key={name} className={styles.input_row}>
                     <label className={styles.label} htmlFor={name}>
@@ -99,7 +100,7 @@ export default function Placeholder({
                       }
                     />
                   </div>
-                )
+                ),
               )}
               <Button
                 className={styles.button}

@@ -1,7 +1,7 @@
 import styles from "./BlockCodeSandbox.module.css";
 import CodeSandboxIcon from "../icons/codesandbox.svg";
 import { ReactEditor, useSlate } from "slate-react";
-import { CustomElement, CodeSandboxElement } from "../types";
+import { CodeSandboxElement, CustomElement } from "../types";
 import { Transforms } from "slate";
 import Placeholder from "../components/Placeholder";
 import { useSelf } from "../liveblocks.config";

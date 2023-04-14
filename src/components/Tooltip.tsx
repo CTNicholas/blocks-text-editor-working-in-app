@@ -4,21 +4,21 @@ import styles from "./Tooltip.module.css";
 
 type TooltipProps = ComponentProps<typeof TooltipPrimitive.Root> &
   ComponentProps<typeof TooltipPrimitive.Content> & {
-    children: ReactElement;
-    content: ReactNode;
-  };
+  children: ReactElement;
+  content: ReactNode;
+};
 
 export default function Tooltip({
-  children,
-  content,
-  open,
-  defaultOpen,
-  onOpenChange,
-  side = "top",
-  align = "center",
-  delayDuration,
-  ...props
-}: TooltipProps) {
+                                  children,
+                                  content,
+                                  open,
+                                  defaultOpen,
+                                  onOpenChange,
+                                  side = "top",
+                                  align = "center",
+                                  delayDuration,
+                                  ...props
+                                }: TooltipProps) {
   return (
     <TooltipPrimitive.Root
       open={open}

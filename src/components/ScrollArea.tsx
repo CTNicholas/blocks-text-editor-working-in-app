@@ -25,7 +25,7 @@ export const ScrollArea = forwardRef<HTMLDivElement, Props>(
         )}
       </ScrollAreaRoot>
     );
-  }
+  },
 );
 
 ScrollArea.displayName = "ScrollArea";

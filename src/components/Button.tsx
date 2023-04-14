@@ -1,12 +1,12 @@
 import classNames from "classnames";
 import {
-  forwardRef,
-  ReactNode,
-  KeyboardEventHandler,
-  PointerEventHandler,
-  TouchEventHandler,
   FocusEventHandler,
+  forwardRef,
+  KeyboardEventHandler,
   MouseEventHandler,
+  PointerEventHandler,
+  ReactNode,
+  TouchEventHandler,
 } from "react";
 import styles from "./Button.module.css";
 
@@ -45,7 +45,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
       type,
       className,
     },
-    ref
+    ref,
   ) => {
     return (
       <button
@@ -58,7 +58,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
             [styles.button_primary]: appearance === "primary",
             [styles.button_square]: isSquare,
           },
-          className
+          className,
         )}
         onClick={onClick}
         onKeyDown={onKeyDown}
@@ -74,7 +74,7 @@ const Button = forwardRef<HTMLButtonElement, Props>(
         {children}
       </button>
     );
-  }
+  },
 );
 
 Button.displayName = "Button";

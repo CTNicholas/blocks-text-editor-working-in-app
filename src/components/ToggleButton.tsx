@@ -1,12 +1,12 @@
 import classNames from "classnames";
 import {
-  forwardRef,
-  ReactNode,
-  KeyboardEventHandler,
-  PointerEventHandler,
-  TouchEventHandler,
   FocusEventHandler,
+  forwardRef,
+  KeyboardEventHandler,
   MouseEventHandler,
+  PointerEventHandler,
+  ReactNode,
+  TouchEventHandler,
 } from "react";
 import styles from "./ToggleButton.module.css";
 
@@ -43,7 +43,7 @@ const ToggleButton = forwardRef<HTMLButtonElement, Props>(
       ariaLabel,
       className,
     },
-    ref
+    ref,
   ) => {
     return (
       <button
@@ -54,7 +54,7 @@ const ToggleButton = forwardRef<HTMLButtonElement, Props>(
             [styles.button_square]: isSquare,
             [styles.button_active]: isActive,
           },
-          className
+          className,
         )}
         onClick={onClick}
         onKeyDown={onKeyDown}
@@ -70,7 +70,7 @@ const ToggleButton = forwardRef<HTMLButtonElement, Props>(
         {children}
       </button>
     );
-  }
+  },
 );
 
 ToggleButton.displayName = "ToggleButton";

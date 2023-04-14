@@ -15,10 +15,10 @@ type Props = {
 };
 
 export default function BlockInlineActions({
-  blockId,
-  onDelete,
-  onInsertBelow,
-}: Props) {
+                                             blockId,
+                                             onDelete,
+                                             onInsertBelow,
+                                           }: Props) {
   const { listeners, setActivatorNodeRef } = useDraggable({
     id: blockId,
   });

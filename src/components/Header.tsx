@@ -14,7 +14,7 @@ export default function Header() {
   const others = useOthers();
 
   const [theme, setTheme] = useState<Theme | null>(
-    localStorage.getItem(LOCAL_STORAGE_THEME) as Theme | null
+    localStorage.getItem(LOCAL_STORAGE_THEME) as Theme | null,
   );
 
   useEffect(() => {

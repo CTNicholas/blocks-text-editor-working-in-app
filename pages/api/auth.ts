@@ -20,7 +20,7 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
     userInfo: {
       name: NAMES[userIndex],
       imageUrl: `https://liveblocks.io/avatars/avatar-${Math.floor(
-        Math.random() * 30
+        Math.random() * 30,
       )}.png`,
     },
   });

@@ -16,12 +16,12 @@ type Props = {
 };
 
 export default function Select({
-  defaultValue,
-  value,
-  onValueChange,
-  disabled,
-  items,
-}: Props) {
+                                 defaultValue,
+                                 value,
+                                 onValueChange,
+                                 disabled,
+                                 items,
+                               }: Props) {
   return (
     <SelectPrimitive.Root
       defaultValue={defaultValue}

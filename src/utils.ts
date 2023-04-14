@@ -1,6 +1,6 @@
 import { nanoid } from "nanoid";
 import { Editor, Element, Operation, Path, Transforms } from "slate";
-import { BlockType, Format, TitleElement, Theme } from "./types";
+import { BlockType, Format, Theme, TitleElement } from "./types";
 
 export function toPx(value: number | undefined): string | undefined {
   return value ? `${Math.round(value)}px` : undefined;
@@ -85,7 +85,7 @@ function transformBlockToTitleIfNecessary(editor: Editor) {
       },
       {
         at: [0],
-      }
+      },
     );
   }
 }
@@ -138,10 +138,10 @@ type CursorType =
   | "grab"
   | "grabbing";
 
- export function setGlobalCursor(type: CursorType) {
-   document.body.classList.add(type);
- }
+export function setGlobalCursor(type: CursorType) {
+  document.body.classList.add(type);
+}
 
- export function removeGlobalCursor(type: CursorType) {
-   document.body.classList.remove(type);
- }
+export function removeGlobalCursor(type: CursorType) {
+  document.body.classList.remove(type);
+}

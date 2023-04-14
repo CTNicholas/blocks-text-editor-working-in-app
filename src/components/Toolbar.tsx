@@ -91,7 +91,7 @@ export default function Toolbar() {
                   },
                   {
                     at: [editor.selection.anchor.path[0]],
-                  }
+                  },
                 );
               }}
             />
@@ -147,7 +147,7 @@ export default function Toolbar() {
         </Tooltip>
       </div>
     </div>,
-    document.body
+    document.body,
   );
 }
 
@@ -160,7 +160,7 @@ function getSelectedElementType(editor: Editor): TextBlock | null {
   if (
     Path.compare(
       topLevelPath(editor.selection.anchor.path),
-      topLevelPath(editor.selection.focus.path)
+      topLevelPath(editor.selection.focus.path),
     ) !== 0
   ) {
     return null;
@@ -168,7 +168,7 @@ function getSelectedElementType(editor: Editor): TextBlock | null {
 
   const element = editor.children[
     editor.selection.anchor.path[0]
-  ] as CustomElement;
+    ] as CustomElement;
 
   if (!isTextElementType(element.type)) {
     return null;
